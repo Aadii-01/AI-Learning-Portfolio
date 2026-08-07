@@ -25,14 +25,22 @@ st.set_page_config(
 # Load Model
 # ----------------------------------------------------
 
-with open("iris_decision_tree.pkl", "rb") as file:
+from pathlib import Path
+import pickle
+
+BASE_DIR = Path(__file__).resolve().parent
+
+MODEL_PATH = BASE_DIR / "iris_decision_tree.pkl"
+
+with open(MODEL_PATH, "rb") as file:
     model = pickle.load(file)
 
 # ----------------------------------------------------
 # Load Dataset
 # ----------------------------------------------------
+DATA_PATH = BASE_DIR / "data" / "iris.csv"
 
-df = pd.read_csv("data/iris.csv")
+df = pd.read_csv(DATA_PATH)
 
 # ----------------------------------------------------
 # Model Evaluation
@@ -171,10 +179,8 @@ elif page == "EDA":
 
     with col1:
         st.subheader("🌸 Count Plot")
-        st.image(
-            "images/countplot.png",
-            use_container_width=True
-        )
+        IMAGE_DIR = BASE_DIR / "images"
+        st.image(IMAGE_DIR / "countplot.png", use_container_width=True)
         st.caption(
     "Shows the number of flowers belonging to each species. "
     "The dataset is perfectly balanced."
@@ -182,8 +188,9 @@ elif page == "EDA":
 
     with col2:
         st.subheader("📊 Histogram")
+        IMAGE_DIR = BASE_DIR / "images"
         st.image(
-            "images/histogram.png",
+            IMAGE_DIR / "histogram.png",
             use_container_width=True
         )
         st.caption(
@@ -200,18 +207,17 @@ elif page == "EDA":
 
     with col1:
         st.subheader("🔥 Correlation Heatmap")
-        st.image(
-            "images/heatmap.png",
-            use_container_width=True
-        )
+        IMAGE_DIR = BASE_DIR / "images"
+        st.image(IMAGE_DIR / "heatmap.png", use_container_width=True)
         st.caption(
     "Shows correlations between the four flower measurements."
 )
 
     with col2:
         st.subheader("🎯 Scatter Plot")
+        IMAGE_DIR = BASE_DIR / "images"
         st.image(
-            "images/scatterplot.png",
+            IMAGE_DIR / "scatterplot.png",
             use_container_width=True
         )
         st.caption(
@@ -225,9 +231,10 @@ elif page == "EDA":
     # -------------------------
 
     st.subheader("🌼 Pair Plot")
+    IMAGE_DIR = BASE_DIR / "images"
 
     st.image(
-        "images/pairplot.png",
+        IMAGE_DIR / "pairplot.png",
         use_container_width=True
     )
     st.caption(
@@ -244,8 +251,9 @@ elif page == "EDA":
 
     with col1:
         st.subheader("📦 Box Plot")
+        IMAGE_DIR = BASE_DIR / "images"
         st.image(
-            "images/boxplot.png",
+            IMAGE_DIR / "boxplot.png",
             use_container_width=True
         )
         st.caption(
@@ -254,8 +262,9 @@ elif page == "EDA":
 
     with col2:
         st.subheader("📈 Feature Importance")
+        IMAGE_DIR = BASE_DIR / "images"
         st.image(
-            "images/feature_importance.png",
+            IMAGE_DIR / "feature_importance.png",
             use_container_width=True
         )
         st.caption(
@@ -269,9 +278,9 @@ elif page == "EDA":
     # -------------------------
 
     st.subheader("🤖 Confusion Matrix")
-
+    IMAGE_DIR = BASE_DIR / "images"
     st.image(
-        "images/confusion_matrix.png",
+        IMAGE_DIR / "confusion_matrix.png",
         use_container_width=True
     )
     st.caption(
