@@ -486,9 +486,9 @@ elif page == "Model Performance":
     # ------------------------------------------------
 
     st.subheader("Confusion Matrix")
-
+    IMAGE_DIR = BASE_DIR / "images"
     st.image(
-        "images/confusion_matrix.png",
+        IMAGE_DIR / "confusion_matrix.png",
         use_container_width=True
     )
 
@@ -499,9 +499,9 @@ elif page == "Model Performance":
     # ------------------------------------------------
 
     st.subheader("Feature Importance")
-
+    IMAGE_DIR = BASE_DIR / "images"
     st.image(
-        "images/feature_importance.png",
+        IMAGE_DIR / "feature_importance.png",
         use_container_width=True
     )
 
